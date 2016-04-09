@@ -1,6 +1,3 @@
-
-
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -33,7 +30,7 @@ public class Driver extends Application {
         v.getChildren().addAll(c.firstNodeForVBox(),c.secondNodeForVBox(),c.thirdNodeForVBox(),c.fourthNodeForVBox());
         v.setLayoutX(1);
         v.setLayoutY(28);
-        root.getChildren().addAll(v,Construction.createMenu());
+        root.getChildren().addAll(v,c.createMenu());
         stage.setScene(scene);
         stage.setTitle("Artsy!");
         stage.sizeToScene();
