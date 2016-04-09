@@ -15,10 +15,10 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 //my own image imports
-import javafx.scene.image.Image;;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import cs1302.p2.MyArtsy;
+
 
 public class Construction {
 
@@ -49,13 +49,17 @@ static MenuItem item2;
 static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
+private boolean image1selected;
+private boolean image2selected;
+
+
 
 //some additonal attributes for the images
 
 private MyArtsy tricks;
-private ImageView bindedImage1 = new ImageView(new Image("file:resources/default.png"));
-private ImageView bindedImage2 = new ImageView(new Image("file:resources/default.png"));
-private ImageView bindedImage3 = new ImageView(new Image("file:resources/default.png"));
+private ImageView bindedImage1 = new ImageView(new Image("default.png"));
+private ImageView bindedImage2 = new ImageView(new Image("default.png"));
+private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	public Construction(){ /* Each instance of a Construction object will have its
 								own nodes that all work together to make the complex nodes of the GUI of
 								the MyArtsy class.*/
@@ -82,6 +86,9 @@ private ImageView bindedImage3 = new ImageView(new Image("file:resources/default
 		 Text pictureLabel1;
 		 Text pictureLabel2;
 		 Text pictureLabel3;
+		 ImageView bindedImage1;
+		 ImageView bindedImage2;
+		 
 	}
 
 
@@ -102,7 +109,7 @@ private ImageView bindedImage3 = new ImageView(new Image("file:resources/default
 
 
 
-	public static MenuBar createMenu(){
+	public  MenuBar createMenu(){
 	bar = new MenuBar();
 	bar.setPrefWidth(939);
 
@@ -112,7 +119,9 @@ private ImageView bindedImage3 = new ImageView(new Image("file:resources/default
 	//openign files
 	item1 = new Menu("Open");
 	item3 = new CheckMenuItem("Open Image 1");
+	item3.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
 	item4 = new CheckMenuItem("Open Image 2");
+	item4.setOnAction(event -> bindedImage2.setImage(new Image("/sample2.png")));
 	item1.getItems().addAll(item3,item4);
 
 	//for exit menu option
@@ -275,9 +284,7 @@ private ImageView bindedImage3 = new ImageView(new Image("file:resources/default
 	/* So after getting the images to load up ontop of the 300x300 spaces to change the label above them use the following code:
 	 The Construction object in Driver.java is named 'c' so I'll use it as the object the method is being called on.
 	 Ex:
-
 	 	c.getPictureLabelOne().setText(" Label's New Name ");
-
 	 	*/
 	public Text getPictureLabelOne(){
 		return pictureLabel1;
