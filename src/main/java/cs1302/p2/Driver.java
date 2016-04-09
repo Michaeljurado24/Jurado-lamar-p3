@@ -1,18 +1,13 @@
-package cs1302.p2;
 
-import cs1302.effects.Artsy;
-import cs1302.p2.MyArtsy;
+
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.image.ImageView;
-
-//my own imports (Hope this works)
-import java.io.File;
-import javafx.scene.image.Image;;
-import javax.imageio.ImageIO;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * This is the driver for this application.
@@ -21,26 +16,21 @@ public class Driver extends Application {
 
     @Override
     public void start(Stage stage) {
-    MyArtsy tricks = new MyArtsy();
-        FlowPane root = new FlowPane();
-        Scene scene = new Scene(root);
-
+    	
+        Group root = new Group();
+        Scene scene = new Scene(root,Color.rgb(245,245,245));
+        VBox v = new VBox();
+       
+        // constructing all the nodes
+        Construction c = new Construction();
+        v.getChildren().addAll(c.firstNodeForVBox(),c.secondNodeForVBox(),c.thirdNodeForVBox(),c.fourthNodeForVBox());
+        root.getChildren().add(v);
+        
         stage.setScene(scene);
         stage.setTitle("Artsy!");
         stage.sizeToScene();
-//experiment reading an image stored in samp
-   // File newFile = new File("samples/sample1.png");
-    System.out.println("This is working so far");
-    Image image =  new Image("file:samples/sample1.png");
-    //Image image2 = new Image("samples/sample2.png");
-    //root.getChildren().add(new ImageView(image));
-    //System.out.println("First imageadded");
-    //ImageView hi = new ImageView(tricks.doVerticalStripes(image,image2, 10));
-    ImageView hi = new ImageView(tricks.doRotate(image, 90));
-    root.getChildren().add(hi);
         stage.show();
-
-
+        
     } // createAndShowGUI
 
     public static void main(String[] args) {
