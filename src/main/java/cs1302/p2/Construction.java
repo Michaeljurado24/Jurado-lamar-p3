@@ -49,8 +49,7 @@ static MenuItem item2;
 static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
-private boolean image1selected;
-private boolean image2selected;
+
 
 
 
@@ -88,6 +87,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		 Text pictureLabel3;
 		 ImageView bindedImage1;
 		 ImageView bindedImage2;
+		 ImageView bindedImage3;
 		 
 	}
 
