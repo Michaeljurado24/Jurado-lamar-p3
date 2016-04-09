@@ -1,0 +1,29 @@
+How To Use our gitHub effectively
+Steps
+1. decide where you want to store your file
+
+2. run: "git clone https://github.com/Michaeljurado24/Jurado-lamar-p3.git" 
+
+3. run: 'cd Jurado-lamar-p3"
+
+4.If you are on Linux, run : "chmod +x sbt"
+-"This will allow you to compile your code in one line using
+	./sbt compile"
+
+5. Make any changes to the file
+
+6. If you want to save your changes
+	
+	1. run "git init"
+	2. run "git add src" (you should only be adding your src file to the repository)
+	3. run "git commit -m "Whatever message you want telling of update"
+	4. run "git push "
+		or
+		"git push https://github.com/Michaeljurado24/Jurado-lamar-p3.git"
+	5.Login as collaborator
+
+7. If you want to compile and run your code (probs from Driver)
+	1. run "./sbt compile"
+	2. run "./sbt run"
+
+i can see all your changes at one time
