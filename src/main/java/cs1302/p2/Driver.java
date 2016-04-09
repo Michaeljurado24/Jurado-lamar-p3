@@ -10,7 +10,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.image.ImageView;
 
 //my own imports (Hope this works)
-import java.io.File; 
+import java.io.File;
 import javafx.scene.image.Image;;
 import javax.imageio.ImageIO;
 
@@ -36,10 +36,11 @@ public class Driver extends Application {
     //root.getChildren().add(new ImageView(image));
     //System.out.println("First imageadded");
     //ImageView hi = new ImageView(tricks.doVerticalStripes(image,image2, 10));
-    //root.getChildren().add(hi); 
+    ImageView hi = new ImageView(tricks.doRotate(image, 90));
+    root.getChildren().add(hi);
         stage.show();
 
-        
+
     } // createAndShowGUI
 
     public static void main(String[] args) {

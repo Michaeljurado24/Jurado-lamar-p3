@@ -31,14 +31,12 @@ public class MyArtsy implements Artsy {
      double pi = 3.14159;
         double initialxx = 0;
         double initialyy = 0;
-    ArrayList<Double> xList = new ArrayList<>();
-    ArrayList<Double> yList = new ArrayList<>();
         for (int x = 0; x < width; ++x) {
          for (int y = 0; y < height; ++y) {
                     double xx = (x * Math.cos(degrees*pi/180) + y*Math.sin(degrees*pi/180));
                     double yy=  (-x * Math.sin(degrees*pi/180) + y*Math.cos(degrees*pi/180));           
                         try{
-                         pw.setArgb((int)(xx),(int)(yy), pr.getArgb(x, y));
+                         pw.setArgb((int)(xx+width/2),(int)(yy+height/2), pr.getArgb(x, y));
                         } catch( IndexOutOfBoundsException e){
 
                         }
@@ -46,34 +44,7 @@ public class MyArtsy implements Artsy {
                     
              } // for
     }// for
-    Object[] newX = xList.toArray();
-    Object[] newY = yList.toArray();
-    Arrays.sort(newX);
-    Arrays.sort(newY);
-    for(Object i: newX){
-            //System.out.println((int)Math.round((double)i));
-    }
-     int counter = 0;
-    
-
-    // for(int i = 0; i < yList.size(); i++){
-    //  double orX = xList.get(i);
-    //  double orY = yList.get(i);
- //             for(int c = 0; c < yList.size(); c++){
-    //      System.out.println(c);
-    //                 double X = xList.get(c);
-    //          double Y = yList.get(c);    
-    //      if (i != c){
-    //          if ( (Math.round(orX) == Math.round(X)) && (Math.round(orY) == Math.round(Y)) ) { 
-    //              counter+= 1;
-    //          }
-    //       } 
-    //                             }    
-    // }
-    System.out.println("all: " + width*height+ ";counter: " + counter);
         return ret;
-
-
         } // doRotate
 
     @Override
