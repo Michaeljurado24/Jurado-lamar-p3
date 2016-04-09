@@ -246,4 +246,11 @@ static CheckMenuItem item4;
 		return rst3;
 	}
 
+	public Text getpictureLabelOne(){
+		return pictureLabel1;
+	}
+	
+	public Text getpictureLabelTwo(){
+		return pictureLabel2;
+	}
 }
