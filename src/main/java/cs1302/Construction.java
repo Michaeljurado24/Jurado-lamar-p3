@@ -245,12 +245,19 @@ static CheckMenuItem item4;
 	public Button getRS3Button(){
 		return rst3;
 	}
-
-	public Text getpictureLabelOne(){
+	
+	/* So after getting the images to load up ontop of the 300x300 spaces to change the label above them use the following code:
+	 The Construction object in Driver.java is named 'c' so I'll use it as the object the method is being called on.
+	 Ex:
+	 
+	 	c.getPictureLabelOne().setText(" Label's New Name ");
+	 	
+	 	*/
+	public Text getPictureLabelOne(){
 		return pictureLabel1;
 	}
 	
-	public Text getpictureLabelTwo(){
+	public Text getPictureLabelTwo(){
 		return pictureLabel2;
 	}
 }
