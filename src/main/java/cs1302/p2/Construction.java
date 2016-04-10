@@ -177,7 +177,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	public GridPane firstNodeForVBox(){
 
 		grid1 = new GridPane(); // The GridPane to hold the first three buttons of the GUI
-
+		
 		// The buttons
 		checkers = new Button("Checkers");
 		checkers.setOnAction(event -> { Stage s = new Stage();
@@ -192,13 +192,15 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 										});
 		vertical = new Button("Vertical Stripes");
 
-		EventHandler<ActionEvent> event = {
-				int width = Integer.parseInt(field.getCharacters().toString() );
+		vertical.setOnAction(event -> this.promptBoxes("Select width of vertical stripes, in pexels.",  new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent e){
+				int width = Integer.parseInt(txtfield.getCharacters().toString() );
 			 	bindedImage3.setImage(tricks.doVerticalStripes(bindedImage1.getImage(),
 				bindedImage2.getImage(), width ) );
-				functionStage.close();
-			};
-
+				s.close();
+			}}
+		));
+		
 		horizontal = new Button("Horizontal Stripes");
 
 		// spaced out the buttons and thickened the invisible border of the GridPane
