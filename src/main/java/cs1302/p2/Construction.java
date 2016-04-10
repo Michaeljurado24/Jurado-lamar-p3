@@ -160,7 +160,7 @@ private Image result;
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.exit(0)
+			System.exit(0);
 		}
 	
 		});
