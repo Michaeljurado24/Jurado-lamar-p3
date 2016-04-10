@@ -1,5 +1,9 @@
+import java.awt.image.BufferedImage;
 import java.io.File;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -57,16 +61,30 @@ static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
 static MenuItem saveitem;
+
+private String nameOfSelectedImage1;
+private String nameofSelectedImage2;
+
 private FileChooser fileChooserForBindedImage1 = new FileChooser();
 private FileChooser fileChooserForBindedImage2 = new FileChooser();
 private FileChooser fileChooserForBindedImage3 = new FileChooser();
 
+
 //some additonal attributes for the images
 
 private MyArtsy tricks;
-private ImageView bindedImage1 = new ImageView(new Image("default.png"));
-private ImageView bindedImage2 = new ImageView(new Image("default.png"));
-private ImageView bindedImage3 = new ImageView(new Image("default.png"));
+
+private ImageView bindedImage1 = new ImageView("/default.png");
+private ImageView bindedImage2 = new ImageView("/default.png");
+private ImageView bindedImage3 = new ImageView("/default.png");
+
+private Image image1BeforeRotate;
+private Image image2BeforeRotate;
+private Image image3BeforeRotate;
+
+private Image result;
+
+
 	public Construction(){ /* Each instance of a Construction object will have its
 								own nodes that all work together to make the complex nodes of the GUI of
 								the MyArtsy class.*/
@@ -96,9 +114,18 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		 ImageView bindedImage1;
 		 ImageView bindedImage2;
 		 ImageView bindedImage3;
+
 		 FileChooser fileChooserForBindedImage1;
 		 FileChooser fileChooserForBindedImage2;
 		 FileChooser fileChooserForBindedImage3;
+
+		  Image image1BeforeRotate;
+		  Image image2BeforeRotate;
+		  Image image3BeforeRotate;
+		  
+		  String nameofSelectedImage1;
+		  String nameOfSelectedImage2;
+
 
 	}
 
@@ -111,7 +138,48 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 	men = new Menu("File");
 	item2 = new MenuItem("Save Result As");
+	
+	
+	
+	
+	// Where I'm working 2:19pm ------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------
+	
+	item2.setOnAction(event -> {
+		Stage stage = new Stage();
 
+
+		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
+		//This line of code  is needed for everything to show up/work.------------------------
+		File fileSelectedForImage3 = 	fileChooserForBindedImage2.showSaveDialog(stage);
+		//-------------------------------------------------------------------
+		if (fileSelectedForImage3 != null) {
+			result = bindedImage3.getImage(); // assume non-empty
+			File file = new File("image.png");
+			BufferedImage bImage = SwingFXUtils.fromFXImage(result, null);
+			try {
+				ImageIO.write(bImage, "png", file);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	
+		});
+	
+	
+	// --------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
 	//openign files
 	item1 = new Menu("Open");
 	item3 = new CheckMenuItem("Open Image 1");
@@ -124,7 +192,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	fileChooserForBindedImage1.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
 	
 	
-    fileChooserForBindedImage1.getExtensionFilters().addAll(
+    fileChooserForBindedImage1.getExtensionFilters().add(
 
             new FileChooser.ExtensionFilter("PNG Only", "*.png")
         );
@@ -134,6 +202,16 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	File fileSelectedForImage1 = 	fileChooserForBindedImage1.showOpenDialog(stage);
     		if (fileSelectedForImage1 != null) {
     			bindedImage1.setImage(new Image(fileSelectedForImage1.toURI().toString()));
+/**
+ * 
+ * 
+ * put your code in this if-statement 
+ * 
+ * 
+ * 
+ */
+    					
+    			
     		}
 	
 	});
@@ -160,65 +238,24 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		
 		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
 		//This line of code  is needed for everything to show up/work.------------------------
-		fileChooserForBindedImage2.showOpenDialog(stage);
-		//------------------------------------------------------------------------------------
-		
-		
 		File fileSelectedForImage2 = 	fileChooserForBindedImage2.showOpenDialog(stage);
+		//-------------------------------------------------------------------
 		if (fileSelectedForImage2 != null) {
 			bindedImage2.setImage(new Image(fileSelectedForImage2.toURI().toString()));
+			/**
+			 * 
+			 * 
+			 * put your code in this if-statement 
+			 * 
+			 * 
+			 * 
+			 */
 		}
 	
 		});
 	
 	
-	
-	
-	
-	
-	
-	
-// Where I'm working 2:19pm ------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------
-	saveitem = new MenuItem("Save Result As..."); 
-	saveitem.setOnAction(event -> {
-		Stage stage = new Stage();
 
-		fileChooserForBindedImage3.setTitle("Save Result In Directory...");
-		
-		// puts the user in a initial file using a path
-		fileChooserForBindedImage3.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
-		
-		
-	    fileChooserForBindedImage3.getExtensionFilters().addAll(
-	    		new FileChooser.ExtensionFilter("All Images", "*.*"),
-	            new FileChooser.ExtensionFilter("PNG Only", "*.png")
-	        );
-		
-		
-		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
-		//This line of code  is needed for everything to show up/work.------------------------
-		fileChooserForBindedImage3.showSaveDialog(stage);
-		//------------------------------------------------------------------------------------
-		
-		
-		File fileSelectedForImage3 = 	fileChooserForBindedImage2.showSaveDialog(stage);
-		if (fileSelectedForImage3 != null) {
-			bindedImage2.setImage(new Image(fileSelectedForImage3.toURI().toString()));
-		}
-	
-		});
-	
-// --------------------------------------------------------------------------------------------
-//--------------------------------------------------------------------------------------------
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	item1.getItems().addAll(item3,item4);
 
@@ -408,6 +445,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		grid3.setPadding(new Insets(3));
 
 
+		
 		//bindedImage3.setImage();
 		grid3.add(bindedImage1, 0, 0);
 		grid3.add(bindedImage2 , 1, 0);
@@ -442,6 +480,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	  
 	  okay.setOnAction(e1 -> {
 			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+			image1BeforeRotate = bindedImage1.getImage(); // saves the original contents of bindedImage1
 		 	bindedImage1.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
 			s.close();
 	  		});	
@@ -481,6 +520,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	  
 	  okay.setOnAction(e1 -> {
 			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+			image2BeforeRotate = bindedImage2.getImage(); // saves the original contents of BindedImage2
 		 	bindedImage2.setImage(tricks.doRotate(bindedImage2.getImage(), width ) );
 			s.close();
 	  		});	
@@ -520,6 +560,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	  
 	  okay.setOnAction(e1 -> {
 			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+			image3BeforeRotate = bindedImage3.getImage(); // saves the original content of bindedImage3
 		 	bindedImage3.setImage(tricks.doRotate(bindedImage3.getImage(), width ) );
 		 	
 			s.close();
@@ -549,11 +590,11 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 	// Creation and placement of Reset buttons
 	rst1 = new Button ("Reset");
-	rst1.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
+	rst1.setOnAction(event -> bindedImage1.setImage(image1BeforeRotate));
 	rst2 = new Button ("Reset");
-	rst2.setOnAction(event -> bindedImage2.setImage(new Image("/sample2.png")));
+	rst2.setOnAction(event -> bindedImage2.setImage(image2BeforeRotate));
 	rst3 = new Button ("Reset");
-	rst3.setOnAction(event -> bindedImage3.setImage(new Image("/default.png")));
+	rst3.setOnAction(event -> bindedImage3.setImage(image3BeforeRotate));
 
 	// Add spacing around the buttons
 	firstSet.getChildren().addAll(rot1,rst1);
