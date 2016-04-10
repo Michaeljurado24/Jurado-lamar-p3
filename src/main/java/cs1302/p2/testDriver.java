@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
 /**
  * This is the driver for this application.
  */
-public class Driver extends Application {
+public class testDriver extends Application {
 
     @Override
     public void start(Stage stage) {
@@ -32,11 +32,11 @@ public class Driver extends Application {
    // File newFile = new File("samples/sample1.png");
     System.out.println("This is working so far");
     Image image =  new Image("file:samples/sample1.png");
-    //Image image2 = new Image("samples/sample2.png");
+    Image image2 = new Image("file:samples/sample2.png");
     //root.getChildren().add(new ImageView(image));
     //System.out.println("First imageadded");
-    //ImageView hi = new ImageView(tricks.doVerticalStripes(image,image2, 10));
-    ImageView hi = new ImageView(tricks.doRotate(image, 90));
+    ImageView hi = new ImageView(tricks.doCheckers(image, image2, 20));
+    //ImageView hi = new ImageView(tricks.doHorizontalStripes(image, image2, 20));
     root.getChildren().add(hi);
         stage.show();
 

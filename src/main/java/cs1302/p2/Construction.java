@@ -1,9 +1,12 @@
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -18,7 +21,7 @@ private Text dimensions;
 private GridPane grid1;
 private GridPane grid2;
 private GridPane grid3;
-private VBox both;
+private HBox collection;
 private GridPane rotateButtons;
 private GridPane resetButtons;
 private Button checkers;
@@ -35,8 +38,11 @@ private Text pictureLabel2;
 private Text pictureLabel3;
 static MenuBar bar;
 static Menu men;
-static MenuItem item1;
+static Menu item1;
 static MenuItem item2;
+static MenuItem exit;
+static CheckMenuItem item3;
+static CheckMenuItem item4;
 
 	public Construction(){ /* Each instance of a Construction object will have its 
 								own nodes that all work together to make the complex nodes of the GUI of 
@@ -47,7 +53,7 @@ static MenuItem item2;
 		 GridPane grid1;
 		 GridPane grid2;
 		 GridPane grid3;
-		 VBox both;
+		 HBox collection;
 		 GridPane rotateButtons;
 		 GridPane resetButtons;
 		 Button checkers;
@@ -80,13 +86,24 @@ static MenuItem item2;
 	}
 	
 
-// Where i stopped.	
-//	public static void createMenu(){ 
-//	bar = new MenuBar();
-//	men = new Menu("File");
-//	item1 = new Menu("Image")
-//	
-//	}
+
+	public static MenuBar createMenu(){ 
+	bar = new MenuBar();
+	bar.setPrefWidth(939);
+
+	men = new Menu("File");
+	item1 = new Menu("Open");
+	item2 = new MenuItem("Save Result As");
+	item3 = new CheckMenuItem("Open Image 1");
+	item4 = new CheckMenuItem("Open Image 2");
+	exit = new MenuItem("Exit");
+	item1.getItems().addAll(item3,item4);
+	men.getItems().addAll(item1,new SeparatorMenuItem(),item2, new SeparatorMenuItem(),exit);
+	
+	bar.getMenus().add(men);
+	return bar;
+	
+	}
 	
 	
 	
@@ -152,50 +169,44 @@ static MenuItem item2;
 		return grid3;
 	}
 
-	public VBox fourthNodeForVBox(){
+	public HBox fourthNodeForVBox(){
 		
-	// a grid is allocated for the sets of rotate and reset buttons.
-	// Both of these gridpanes will be placed in the VBox called 'both'.
-	// The node 'both' will be returned by the method.
+	// Creates an HBox that holds three VBoxes that hold inside of them two buttons. 
+	// Each button in each VBox is spaced out using setMargin method.
 	
 	
-	both = new VBox();
-	
-	rotateButtons = new GridPane();	
-	//setPadding keeps the first button a certain length away from the left edge of the window.
-	// the Hgap spaces the buttons out.
-	
-	rotateButtons.setPadding(new Insets(5));
-	rotateButtons.setHgap(190);
-	
-	resetButtons = new GridPane();
-	//setPadding keeps the first button a certain length away from the left edge of the window.
-	// the Hgap spaces the buttons out.
-	resetButtons.setPadding(new Insets(5));
-	resetButtons.setHgap(200);	
+	collection = new HBox(252);
+	collection.setPadding(new Insets(3));
+	VBox firstSet = new VBox();
+	VBox secondSet = new VBox();
+	VBox thirdSet = new VBox();
 	
 	// Creation and placement of Rotate buttons
 	rot1 = new Button ("Rotate");
 	rot2 = new Button ("Rotate");
 	rot3 = new Button ("Rotate");
 	
-	rotateButtons.add(rot1, 0, 0);
-	rotateButtons.add(rot2, 1, 0);
-	rotateButtons.add(rot3, 3, 0);
 	
 	// Creation and placement of Reset buttons
 	rst1 = new Button ("Reset");
 	rst2 = new Button ("Reset");
 	rst3 = new Button ("Reset");
 	
-	resetButtons.add(rst1, 0, 0);
-	resetButtons.add(rst2, 1, 0);
-	resetButtons.add(rst3, 3, 0);
+	// Add spacing around the buttons
+	firstSet.getChildren().addAll(rot1,rst1);
+	firstSet.setMargin(rot1, new Insets(3,3,3,3));
+	firstSet.setMargin(rst1, new Insets(3,3,3,3));
 	
-	// Placing both gridpanes into VBox.
+	secondSet.getChildren().addAll(rot2,rst2);
+	secondSet.setMargin(rot2, new Insets(3,3,3,3));
+	firstSet.setMargin(rst2, new Insets(3,3,3,3));
 	
-	both.getChildren().addAll(rotateButtons,resetButtons);
-	return both;
+	thirdSet.getChildren().addAll(rot3,rst3);
+	thirdSet.setMargin(rot3, new Insets(3,3,3,3));
+	firstSet.setMargin(rst3, new Insets(3,3,3,3));
+	
+	collection.getChildren().addAll(firstSet,secondSet,thirdSet);
+	return collection;
 	}
 	
 	public Button getCButton(){
@@ -234,5 +245,19 @@ static MenuItem item2;
 	public Button getRS3Button(){
 		return rst3;
 	}
-
+	
+	/* So after getting the images to load up ontop of the 300x300 spaces to change the label above them use the following code:
+	 The Construction object in Driver.java is named 'c' so I'll use it as the object the method is being called on.
+	 Ex:
+	 
+	 	c.getPictureLabelOne().setText(" Label's New Name ");
+	 	
+	 	*/
+	public Text getPictureLabelOne(){
+		return pictureLabel1;
+	}
+	
+	public Text getPictureLabelTwo(){
+		return pictureLabel2;
+	}
 }
