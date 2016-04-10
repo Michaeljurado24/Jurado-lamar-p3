@@ -183,7 +183,7 @@ private Image result;
 	fileChooserForBindedImage1.setTitle("Image For Image 1...");
 	
 	// puts the user in a initial file using a path
-	
+
 	
 	
     fileChooserForBindedImage1.getExtensionFilters().add(
@@ -214,7 +214,7 @@ private Image result;
 		fileChooserForBindedImage2.setTitle("Image For Image 2...");
 		
 		// puts the user in a initial file using a path
-		
+
 		
 		
 	    fileChooserForBindedImage2.getExtensionFilters().addAll(
