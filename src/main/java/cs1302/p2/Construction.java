@@ -14,6 +14,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
+//my own image imports
+import javafx.scene.image.Image;;
+import javafx.scene.image.ImageView;
+
 public class Construction {
 
 private Group imgContainer;
@@ -44,10 +48,18 @@ static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
 
+//some additonal attributes for the images
+private Image picture1;
+private Image picture2;
+private Image picture3;
+
 	public Construction(){ /* Each instance of a Construction object will have its
 								own nodes that all work together to make the complex nodes of the GUI of
 								the MyArtsy class.*/
-
+		//setting picture initially
+		 picture1 = new Image("file:resources/default.png");
+		 picture2 = new Image("file:resources/default.png");
+		 picture3 = new Image("file:resources/default.png");
 		 Group imgContainer;
 		 Text dimensions;
 		 GridPane grid1;
@@ -80,7 +92,8 @@ static CheckMenuItem item4;
 		dimensions.setScaleX(4);
 		dimensions.setX(110);
 		dimensions.setY(140);
-		imgContainer.getChildren().addAll(r1,dimensions);
+
+		imgContainer.getChildren().addAll(r1, dimensions);
 		return imgContainer;
 
 	}
@@ -92,17 +105,18 @@ static CheckMenuItem item4;
 	bar.setPrefWidth(939);
 
 	men = new Menu("File");
-	item1 = new Menu("Open");
 	item2 = new MenuItem("Save Result As");
+
+	//openign files
+	item1 = new Menu("Open");
 	item3 = new CheckMenuItem("Open Image 1");
 	item4 = new CheckMenuItem("Open Image 2");
+	item1.getItems().addAll(item3,item4);
 
 	//for exit menu option
 	exit = new MenuItem("Exit");
 	exit.setOnAction(e -> System.exit(0) );
 
-
-	item1.getItems().addAll(item3,item4);
 	men.getItems().addAll(item1,new SeparatorMenuItem(),item2, new SeparatorMenuItem(),exit);
 
 	bar.getMenus().add(men);
@@ -168,9 +182,13 @@ static CheckMenuItem item4;
 		grid3 = new GridPane();
 		grid3.setHgap(8);
 		grid3.setPadding(new Insets(3));
-		grid3.add(Construction.imageSlot(), 0, 0);
-		grid3.add(Construction.imageSlot(), 1, 0);
-		grid3.add(Construction.imageSlot(), 2, 0);
+
+		ImageView bindedImage1 = new ImageView(picture1);
+		ImageView bindedImage2 = new ImageView(picture2);
+		ImageView bindedImage3 = new ImageView(picture3);
+		grid3.add(bindedImage1, 0, 0);
+		grid3.add(bindedImage2 , 1, 0);
+		grid3.add(bindedImage3, 2, 0);
 		return grid3;
 	}
 
@@ -188,6 +206,8 @@ static CheckMenuItem item4;
 
 	// Creation and placement of Rotate buttons
 	rot1 = new Button ("Rotate");
+	//rot1.setOnAction()
+
 	rot2 = new Button ("Rotate");
 	rot3 = new Button ("Rotate");
 
