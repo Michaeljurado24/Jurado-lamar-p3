@@ -1,6 +1,11 @@
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+//import javafx.stage.Group;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
@@ -13,12 +18,13 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.geometry.Insets;
 
 //my own image imports
-import javafx.scene.image.Image;
+import javafx.scene.image.Image;;
 import javafx.scene.image.ImageView;
 
-
+import cs1302.p2.MyArtsy;
 
 public class Construction {
 
@@ -50,15 +56,12 @@ static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
 
-
-
-
 //some additonal attributes for the images
 
 private MyArtsy tricks;
-private ImageView bindedImage1 = new ImageView(new Image("default.png"));
-private ImageView bindedImage2 = new ImageView(new Image("default.png"));
-private ImageView bindedImage3 = new ImageView(new Image("default.png"));
+private ImageView bindedImage1 = new ImageView(new Image("file:resources/default.png"));
+private ImageView bindedImage2 = new ImageView(new Image("file:resources/default.png"));
+private ImageView bindedImage3 = new ImageView(new Image("file:resources/default.png"));
 	public Construction(){ /* Each instance of a Construction object will have its
 								own nodes that all work together to make the complex nodes of the GUI of
 								the MyArtsy class.*/
@@ -85,14 +88,10 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		 Text pictureLabel1;
 		 Text pictureLabel2;
 		 Text pictureLabel3;
-		 ImageView bindedImage1;
-		 ImageView bindedImage2;
-		 ImageView bindedImage3;
-		 
 	}
 
 
-	public static Group imageSlot(){
+	public  Group imageSlot(){
 		Group imgContainer = new Group();
 		Rectangle r1 = new Rectangle(300,300,Color.rgb(190,190,190));
 		Text dimensions = new Text("300 x 300");
@@ -109,7 +108,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 
 
-	public  MenuBar createMenu(){
+	public static MenuBar createMenu(){
 	bar = new MenuBar();
 	bar.setPrefWidth(939);
 
@@ -119,9 +118,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	//openign files
 	item1 = new Menu("Open");
 	item3 = new CheckMenuItem("Open Image 1");
-	item3.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
 	item4 = new CheckMenuItem("Open Image 2");
-	item4.setOnAction(event -> bindedImage2.setImage(new Image("/sample2.png")));
 	item1.getItems().addAll(item3,item4);
 
 	//for exit menu option
@@ -145,6 +142,48 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		// The buttons
 		checkers = new Button("Checkers");
 		vertical = new Button("Vertical Stripes");
+		vertical.setOnAction( (event) -> {
+			Stage functionStage = new Stage();
+			Group root = new Group();
+
+			Scene scene = new Scene(root, 300, 90);
+
+			//the Label explaning hor input
+			Text newLabel = new Text("Please enetred the desired horizontal width");
+			newLabel.setX(0);
+			newLabel.setY(50);
+
+			//where you put in the data
+			TextField field = new TextField();
+			field.setLayoutX(0);
+			field.setLayoutY(70);
+
+			//the ok button
+			Button okayButton = new Button("okay");
+			okayButton.setLayoutX(0);
+			okayButton.setLayoutY(130);
+			EventHandler<ActionEvent> event = {
+					int width = Integer.parseInt(field.getCharacters().toString() );
+				 	bindedImage3.setImage(tricks.doVerticalStripes(bindedImage1.getImage(),
+					bindedImage2.getImage(), width ) );
+					functionStage.close();
+			}; 
+			okayButton.setOnAction( (e) -> {
+					int width = Integer.parseInt(field.getCharacters().toString() );
+				 	bindedImage3.setImage(tricks.doVerticalStripes(bindedImage1.getImage(),
+					bindedImage2.getImage(), width ) );
+					functionStage.close();
+			});
+
+			//the cancel button
+			Button cancelButton = new Button("cancel");
+			cancelButton.setLayoutX(70);
+			cancelButton.setLayoutY(130);
+
+			root.getChildren().addAll(newLabel, field, cancelButton, okayButton);
+			functionStage.setScene(scene);
+			functionStage.show();
+		});
 		horizontal = new Button("Horizontal Stripes");
 
 		// spaced out the buttons and thickened the invisible border of the GridPane
@@ -284,7 +323,9 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	/* So after getting the images to load up ontop of the 300x300 spaces to change the label above them use the following code:
 	 The Construction object in Driver.java is named 'c' so I'll use it as the object the method is being called on.
 	 Ex:
+
 	 	c.getPictureLabelOne().setText(" Label's New Name ");
+
 	 	*/
 	public Text getPictureLabelOne(){
 		return pictureLabel1;
