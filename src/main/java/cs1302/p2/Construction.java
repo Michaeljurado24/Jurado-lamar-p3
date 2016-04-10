@@ -18,6 +18,8 @@ import javafx.scene.text.Text;
 import javafx.scene.image.Image;;
 import javafx.scene.image.ImageView;
 
+import cs1302.p2.MyArtsy;
+
 public class Construction {
 
 private Group imgContainer;
@@ -49,17 +51,17 @@ static CheckMenuItem item3;
 static CheckMenuItem item4;
 
 //some additonal attributes for the images
-private Image picture1;
-private Image picture2;
-private Image picture3;
 
+private MyArtsy tricks;
+private ImageView bindedImage1 = new ImageView(new Image("file:resources/default.png"));
+private ImageView bindedImage2 = new ImageView(new Image("file:resources/default.png"));
+private ImageView bindedImage3 = new ImageView(new Image("file:resources/default.png"));
 	public Construction(){ /* Each instance of a Construction object will have its
 								own nodes that all work together to make the complex nodes of the GUI of
 								the MyArtsy class.*/
 		//setting picture initially
-		 picture1 = new Image("file:resources/default.png");
-		 picture2 = new Image("file:resources/default.png");
-		 picture3 = new Image("file:resources/default.png");
+		tricks = new MyArtsy();
+
 		 Group imgContainer;
 		 Text dimensions;
 		 GridPane grid1;
@@ -183,9 +185,8 @@ private Image picture3;
 		grid3.setHgap(8);
 		grid3.setPadding(new Insets(3));
 
-		ImageView bindedImage1 = new ImageView(picture1);
-		ImageView bindedImage2 = new ImageView(picture2);
-		ImageView bindedImage3 = new ImageView(picture3);
+
+		//bindedImage3.setImage();
 		grid3.add(bindedImage1, 0, 0);
 		grid3.add(bindedImage2 , 1, 0);
 		grid3.add(bindedImage3, 2, 0);
@@ -206,7 +207,7 @@ private Image picture3;
 
 	// Creation and placement of Rotate buttons
 	rot1 = new Button ("Rotate");
-	//rot1.setOnAction()
+	//rot1.setOnAction(event ->  = tricks.doRotate(picture1, 90) );
 
 	rot2 = new Button ("Rotate");
 	rot3 = new Button ("Rotate");
