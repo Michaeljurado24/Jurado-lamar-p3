@@ -1,3 +1,5 @@
+import java.io.File;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 //my own image imports
 import javafx.scene.image.Image;
@@ -53,8 +56,10 @@ static MenuItem item2;
 static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
-
-
+static MenuItem saveitem;
+private FileChooser fileChooserForBindedImage1 = new FileChooser();
+private FileChooser fileChooserForBindedImage2 = new FileChooser();
+private FileChooser fileChooserForBindedImage3 = new FileChooser();
 
 //some additonal attributes for the images
 
@@ -91,6 +96,9 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		 ImageView bindedImage1;
 		 ImageView bindedImage2;
 		 ImageView bindedImage3;
+		 FileChooser fileChooserForBindedImage1;
+		 FileChooser fileChooserForBindedImage2;
+		 FileChooser fileChooserForBindedImage3;
 
 	}
 
@@ -107,9 +115,111 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	//openign files
 	item1 = new Menu("Open");
 	item3 = new CheckMenuItem("Open Image 1");
-	item3.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
+	item3.setOnAction(event -> {
+	Stage stage = new Stage();
+
+	fileChooserForBindedImage1.setTitle("Image For Image 1...");
+	
+	// puts the user in a initial file using a path
+	fileChooserForBindedImage1.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
+	
+	
+    fileChooserForBindedImage1.getExtensionFilters().addAll(
+
+            new FileChooser.ExtensionFilter("PNG Only", "*.png")
+        );
+
+	// makes the file chooser pop up in the stage made earlier in this lambda expression. 
+	//This last line of code  is needed for everything to show up/work.
+	File fileSelectedForImage1 = 	fileChooserForBindedImage1.showOpenDialog(stage);
+    		if (fileSelectedForImage1 != null) {
+    			bindedImage1.setImage(new Image(fileSelectedForImage1.toURI().toString()));
+    		}
+	
+	});
+	
+
+
+//	item3.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
 	item4 = new CheckMenuItem("Open Image 2");
-	item4.setOnAction(event -> bindedImage2.setImage(new Image("/sample2.png")));
+	
+	item4.setOnAction(event -> {
+		Stage stage = new Stage();
+
+		fileChooserForBindedImage2.setTitle("Image For Image 2...");
+		
+		// puts the user in a initial file using a path
+		fileChooserForBindedImage2.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
+		
+		
+	    fileChooserForBindedImage2.getExtensionFilters().addAll(
+
+	            new FileChooser.ExtensionFilter("PNG Only", "*.png")
+	        );
+		
+		
+		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
+		//This line of code  is needed for everything to show up/work.------------------------
+		fileChooserForBindedImage2.showOpenDialog(stage);
+		//------------------------------------------------------------------------------------
+		
+		
+		File fileSelectedForImage2 = 	fileChooserForBindedImage2.showOpenDialog(stage);
+		if (fileSelectedForImage2 != null) {
+			bindedImage2.setImage(new Image(fileSelectedForImage2.toURI().toString()));
+		}
+	
+		});
+	
+	
+	
+	
+	
+	
+	
+	
+// Where I'm working 2:19pm ------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+	saveitem = new MenuItem("Save Result As..."); 
+	saveitem.setOnAction(event -> {
+		Stage stage = new Stage();
+
+		fileChooserForBindedImage3.setTitle("Save Result In Directory...");
+		
+		// puts the user in a initial file using a path
+		fileChooserForBindedImage3.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
+		
+		
+	    fileChooserForBindedImage3.getExtensionFilters().addAll(
+	    		new FileChooser.ExtensionFilter("All Images", "*.*"),
+	            new FileChooser.ExtensionFilter("PNG Only", "*.png")
+	        );
+		
+		
+		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
+		//This line of code  is needed for everything to show up/work.------------------------
+		fileChooserForBindedImage3.showSaveDialog(stage);
+		//------------------------------------------------------------------------------------
+		
+		
+		File fileSelectedForImage3 = 	fileChooserForBindedImage2.showSaveDialog(stage);
+		if (fileSelectedForImage3 != null) {
+			bindedImage2.setImage(new Image(fileSelectedForImage3.toURI().toString()));
+		}
+	
+		});
+	
+// --------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	item1.getItems().addAll(item3,item4);
 
 	//for exit menu option
