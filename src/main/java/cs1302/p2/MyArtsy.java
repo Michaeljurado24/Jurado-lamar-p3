@@ -1,6 +1,4 @@
-package cs1302.p2;
 
-import cs1302.effects.Artsy;
 import javafx.scene.image.*;
 
 import javafx.scene.image.ImageView;
@@ -8,7 +6,9 @@ import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
 public class MyArtsy implements Artsy {
-
+/**
+ *  This class implements the methods from the Artsy interface.
+ */
     @Override
     public Image doCheckers(Image src1, Image src2, int size) {
       Image image1 = this.doHorizontalStripes(src1, src2, size);
@@ -73,7 +73,8 @@ public class MyArtsy implements Artsy {
                     double xx = (x * Math.cos(degrees*pi/180) + y*Math.sin(degrees*pi/180));
                     double yy=  (-x * Math.sin(degrees*pi/180) + y*Math.cos(degrees*pi/180));
                         try{
-                         pw.setArgb((int)(xx+width/2),(int)(yy+height/2), pr.getArgb(x, y));
+                         pw.setArgb((int)(xx+width/190),(int)(yy+height/9), pr.getArgb(x, y));
+                         // the original code for line 76: pw.setArgb((int)(xx+width/2),(int)(yy+height/2), pr.getArgb(x, y));
                         } catch( IndexOutOfBoundsException e){
 
                         }
