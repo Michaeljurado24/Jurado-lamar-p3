@@ -1,19 +1,23 @@
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-
+import javafx.stage.Stage;
 //my own image imports
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -49,7 +53,6 @@ static MenuItem item2;
 static MenuItem exit;
 static CheckMenuItem item3;
 static CheckMenuItem item4;
-
 
 
 
@@ -107,8 +110,41 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 	}
 
+	public void promptBoxes(String prompt, EventHandler<ActionEvent> e, EventHandler<ActionEvent> e2){
+		
+		  Stage s = new Stage();
+		  Group g = new Group();
+		  Scene s1 = new Scene( g, 400, 200);
+		  Text txt = new Text(prompt);
+		  Button cancel = new Button("Cancel");
+		  cancel.setOnAction((EventHandler<ActionEvent>) e);
+		  Button okay = new Button("Okay");
 
+		  
+		  TextField txtfield = new TextField();
+		  txtfield.setMaxWidth(200);
 
+		  txt.setX(90);
+		  txt.setY(50);
+		  
+		  txtfield.setLayoutX(120);
+		  txtfield.setLayoutY(60);
+		  
+		  cancel.setLayoutX(130);
+		  cancel.setLayoutY(100);
+		  
+		  okay.setLayoutX(200);
+		  okay.setLayoutY(100);
+		  
+		  g.getChildren().addAll(txt,txtfield,cancel,okay);
+		  s.setScene(s1);
+		  s.show();
+
+	
+		
+	}
+
+	
 	public  MenuBar createMenu(){
 	bar = new MenuBar();
 	bar.setPrefWidth(939);
@@ -144,6 +180,16 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 		// The buttons
 		checkers = new Button("Checkers");
+		checkers.setOnAction(event -> { Stage s = new Stage();
+		s.setTitle("Checkers Options");
+								 
+		
+		
+		
+		
+		
+		
+										});
 		vertical = new Button("Vertical Stripes");
 		horizontal = new Button("Horizontal Stripes");
 
