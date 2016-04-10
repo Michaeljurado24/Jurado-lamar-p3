@@ -268,7 +268,7 @@ private Image result;
 		  Text txt = new Text("Enter a integer to serve as width of each checker,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
-		  cancel.setOnAction(e -> System.exit(0) );
+		  cancel.setOnAction(e -> s.close() );
 		  Button okay = new Button("Okay");
 		  
 		  
@@ -309,7 +309,7 @@ private Image result;
 		  Text txt = new Text("Enter a integer to serve as width of vertical stripes,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
-		  cancel.setOnAction(e -> System.exit(0) );
+		  cancel.setOnAction(e -> s.close() );
 		  Button okay = new Button("Okay");
 		  
 		  
@@ -348,7 +348,7 @@ private Image result;
 		  Text txt = new Text("Enter a integer to serve as width of horiztonal stripes,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
-		  cancel.setOnAction(e -> System.exit(0) );
+		  cancel.setOnAction(e -> s.close());
 		  Button okay = new Button("Okay");
 		  
 		  
@@ -456,7 +456,7 @@ private Image result;
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
-	  cancel.setOnAction(e -> System.exit(0) );
+	  cancel.setOnAction(e -> s.close() );
 	  Button okay = new Button("Okay");
 	  
 	  
@@ -496,7 +496,7 @@ private Image result;
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
-	  cancel.setOnAction(e -> System.exit(0) );
+	  cancel.setOnAction(e -> s.close());
 	  Button okay = new Button("Okay");
 	  
 	  
@@ -536,7 +536,7 @@ private Image result;
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
-	  cancel.setOnAction(e -> System.exit(0) );
+	  cancel.setOnAction(e -> s.close());
 	  Button okay = new Button("Okay");
 	  
 	  
