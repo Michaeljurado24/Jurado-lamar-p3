@@ -264,7 +264,7 @@ private Image result;
 		checkers.setOnAction( event -> 
 		  {Stage s = new Stage();
 		  Group g = new Group();
-		  Scene s1 = new Scene( g, 400, 200);
+		  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 		  Text txt = new Text("Enter a integer to serve as width of each checker,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
@@ -305,7 +305,7 @@ private Image result;
 		vertical.setOnAction( event -> 
 		  {Stage s = new Stage();
 		  Group g = new Group();
-		  Scene s1 = new Scene( g, 400, 200);
+		  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 		  Text txt = new Text("Enter a integer to serve as width of vertical stripes,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
@@ -344,7 +344,7 @@ private Image result;
 		horizontal.setOnAction( (event) -> 
 		  {Stage s = new Stage();
 		  Group g = new Group();
-		  Scene s1 = new Scene( g, 400, 200);
+		  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 		  Text txt = new Text("Enter a integer to serve as width of horiztonal stripes,in pixels");
 		  TextField txtfield = new TextField();
 		  Button cancel = new Button("Cancel");
@@ -452,7 +452,7 @@ private Image result;
 	rot1.setOnAction( event -> 
 	  {Stage s = new Stage();
 	  Group g = new Group();
-	  Scene s1 = new Scene( g, 400, 200);
+	  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
@@ -492,7 +492,7 @@ private Image result;
 	rot2.setOnAction( event -> 
 	  {Stage s = new Stage();
 	  Group g = new Group();
-	  Scene s1 = new Scene( g, 400, 200);
+	  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
@@ -532,7 +532,7 @@ private Image result;
 	rot3.setOnAction( event -> 
 	  {Stage s = new Stage();
 	  Group g = new Group();
-	  Scene s1 = new Scene( g, 400, 200);
+	  Scene s1 = new Scene( g, 500, 200,Color.rgb(245,245,245));
 	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
 	  TextField txtfield = new TextField();
 	  Button cancel = new Button("Cancel");
