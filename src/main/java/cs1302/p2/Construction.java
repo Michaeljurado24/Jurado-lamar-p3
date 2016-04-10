@@ -481,7 +481,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	  
 	  okay.setOnAction(e1 -> {
 			int width = Integer.parseInt(txtfield.getCharacters().toString() );
-		 	bindedImage2.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
+		 	bindedImage2.setImage(tricks.doRotate(bindedImage2.getImage(), width ) );
 			s.close();
 	  		});	
 		
@@ -520,7 +520,7 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	  
 	  okay.setOnAction(e1 -> {
 			int width = Integer.parseInt(txtfield.getCharacters().toString() );
-		 	bindedImage3.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
+		 	bindedImage3.setImage(tricks.doRotate(bindedImage3.getImage(), width ) );
 		 	
 			s.close();
 	  		});	
