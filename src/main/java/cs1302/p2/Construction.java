@@ -78,9 +78,9 @@ private ImageView bindedImage1 = new ImageView("file:resources/default.png");
 private ImageView bindedImage2 = new ImageView("file:resources/default.png");
 private ImageView bindedImage3 = new ImageView("file:resources/default.png");
 
-private Image image1BeforeRotate;
-private Image image2BeforeRotate;
-private Image image3BeforeRotate;
+private Image image1BeforeRotate = new Image ("file:resources/default.png"); // wasnt here before
+private Image image2BeforeRotate = new Image ("file:resources/default.png");
+private Image image3BeforeRotate =  new Image ("file:resources/default.png");
 
 private Image result;
 
