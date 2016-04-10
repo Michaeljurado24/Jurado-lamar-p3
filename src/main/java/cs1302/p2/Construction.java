@@ -63,7 +63,7 @@ static CheckMenuItem item4;
 static MenuItem saveitem;
 
 private String nameOfSelectedImage1;
-private String nameofSelectedImage2;
+private String nameOfSelectedImage2;
 
 private FileChooser fileChooserForBindedImage1 = new FileChooser();
 private FileChooser fileChooserForBindedImage2 = new FileChooser();
@@ -123,7 +123,7 @@ private Image result;
 		  Image image2BeforeRotate;
 		  Image image3BeforeRotate;
 		  
-		  String nameofSelectedImage1;
+		  String nameOfSelectedImage1;
 		  String nameOfSelectedImage2;
 
 
@@ -142,23 +142,20 @@ private Image result;
 	
 	
 	
-	// Where I'm working 2:19pm ------------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------------------
-	
 	item2.setOnAction(event -> {
 		Stage stage = new Stage();
 
 
 		// makes the file chooser pop up in the stage made earlier in this lambda expression. 
 		//This line of code  is needed for everything to show up/work.------------------------
-		File fileSelectedForImage3 = 	fileChooserForBindedImage2.showSaveDialog(stage);
+		File fileSelectedForImage3 = 	fileChooserForBindedImage3.showSaveDialog(stage);
 		//-------------------------------------------------------------------
 		if (fileSelectedForImage3 != null) {
 			result = bindedImage3.getImage(); // assume non-empty
 			File file = new File("image.png");
 			BufferedImage bImage = SwingFXUtils.fromFXImage(result, null);
 			try {
-				ImageIO.write(bImage, "png", file);
+				ImageIO.write(bImage, "png", fileSelectedForImage3);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -167,10 +164,7 @@ private Image result;
 	
 		});
 	
-	
-	// --------------------------------------------------------------------------------------------
-	//--------------------------------------------------------------------------------------------
-		
+
 		
 		
 	
@@ -189,7 +183,7 @@ private Image result;
 	fileChooserForBindedImage1.setTitle("Image For Image 1...");
 	
 	// puts the user in a initial file using a path
-	fileChooserForBindedImage1.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
+	fileChooserForBindedImage1.setInitialDirectory(new File("\\")); // IDK how this is going to act, on nike.
 	
 	
     fileChooserForBindedImage1.getExtensionFilters().add(
@@ -202,16 +196,9 @@ private Image result;
 	File fileSelectedForImage1 = 	fileChooserForBindedImage1.showOpenDialog(stage);
     		if (fileSelectedForImage1 != null) {
     			bindedImage1.setImage(new Image(fileSelectedForImage1.toURI().toString()));
-/**
- * 
- * 
- * put your code in this if-statement 
- * 
- * 
- * 
- */
-    					
-    			
+    			nameOfSelectedImage1 = fileSelectedForImage1.getName();
+    			pictureLabel1.setText(nameOfSelectedImage1);
+    				
     		}
 	
 	});
@@ -227,7 +214,7 @@ private Image result;
 		fileChooserForBindedImage2.setTitle("Image For Image 2...");
 		
 		// puts the user in a initial file using a path
-		fileChooserForBindedImage2.setInitialDirectory(new File("C:\\Users\\Jarrad\\Desktop\\samples")); // IDK how this is going to act, on nike.
+		fileChooserForBindedImage2.setInitialDirectory(new File("\\")); // IDK how this is going to act, on nike.
 		
 		
 	    fileChooserForBindedImage2.getExtensionFilters().addAll(
@@ -242,14 +229,8 @@ private Image result;
 		//-------------------------------------------------------------------
 		if (fileSelectedForImage2 != null) {
 			bindedImage2.setImage(new Image(fileSelectedForImage2.toURI().toString()));
-			/**
-			 * 
-			 * 
-			 * put your code in this if-statement 
-			 * 
-			 * 
-			 * 
-			 */
+			nameOfSelectedImage2 = fileSelectedForImage2.getName();
+			pictureLabel2.setText(nameOfSelectedImage2);
 		}
 	
 		});
