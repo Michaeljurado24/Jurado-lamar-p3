@@ -95,54 +95,6 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 	}
 
 
-	public static Group imageSlot(){
-		Group imgContainer = new Group();
-		Rectangle r1 = new Rectangle(300,300,Color.rgb(190,190,190));
-		Text dimensions = new Text("300 x 300");
-		dimensions.setFill(Color.rgb(140, 140, 140));
-		dimensions.setScaleY(4);
-		dimensions.setScaleX(4);
-		dimensions.setX(110);
-		dimensions.setY(140);
-
-		imgContainer.getChildren().addAll(r1, dimensions);
-		return imgContainer;
-
-	}
-
-	public void promptBoxes(String prompt, EventHandler<ActionEvent> e2){
-
-		  Stage s = new Stage();
-		  Group g = new Group();
-		  Scene s1 = new Scene( g, 400, 200);
-		  Text txt = new Text(prompt);
-		  Button cancel = new Button("Cancel");
-		  cancel.setOnAction(e -> System.exit(0) );
-		  Button okay = new Button("Okay");
-			okay.setOnAction(e2);
-
-		  TextField txtfield = new TextField();
-		  txtfield.setMaxWidth(200);
-
-		  txt.setX(90);
-		  txt.setY(50);
-
-		  txtfield.setLayoutX(120);
-		  txtfield.setLayoutY(60);
-
-		  cancel.setLayoutX(130);
-		  cancel.setLayoutY(100);
-
-		  okay.setLayoutX(200);
-		  okay.setLayoutY(100);
-
-		  g.getChildren().addAll(txt,txtfield,cancel,okay);
-		  s.setScene(s1);
-		  s.show();
-
-
-
-	}
 
 
 	public  MenuBar createMenu(){
@@ -180,29 +132,124 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 		
 		// The buttons
 		checkers = new Button("Checkers");
-		checkers.setOnAction(event -> { Stage s = new Stage();
-		s.setTitle("Checkers Options");
+		checkers.setOnAction( event -> 
+		  {Stage s = new Stage();
+		  Group g = new Group();
+		  Scene s1 = new Scene( g, 400, 200);
+		  Text txt = new Text("Enter a integer to serve as width of each checker,in pixels");
+		  TextField txtfield = new TextField();
+		  Button cancel = new Button("Cancel");
+		  cancel.setOnAction(e -> System.exit(0) );
+		  Button okay = new Button("Okay");
+		  
+		  
+		  okay.setOnAction(e1 -> {
+				int width = Integer.parseInt(txtfield.getCharacters().toString() );
+			 	bindedImage3.setImage(tricks.doCheckers(bindedImage1.getImage(),
+				bindedImage2.getImage(), width ) );
+				s.close();
+		  		});	
+			
+		  txtfield.setMaxWidth(200);
 
+		  txt.setX(90);
+		  txt.setY(50);
 
+		  txtfield.setLayoutX(120);
+		  txtfield.setLayoutY(60);
 
+		  cancel.setLayoutX(130);
+		  cancel.setLayoutY(100);
 
+		  okay.setLayoutX(200);
+		  okay.setLayoutY(100);
 
-
-
-										});
+		  g.getChildren().addAll(txt,txtfield,cancel,okay);
+		  s.setScene(s1);
+		  s.show();
+		  });
+		
+		
+		
+		
 		vertical = new Button("Vertical Stripes");
-
-		vertical.setOnAction(event -> this.promptBoxes("Select width of vertical stripes, in pexels.",  new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent e){
+		vertical.setOnAction( event -> 
+		  {Stage s = new Stage();
+		  Group g = new Group();
+		  Scene s1 = new Scene( g, 400, 200);
+		  Text txt = new Text("Enter a integer to serve as width of vertical stripes,in pixels");
+		  TextField txtfield = new TextField();
+		  Button cancel = new Button("Cancel");
+		  cancel.setOnAction(e -> System.exit(0) );
+		  Button okay = new Button("Okay");
+		  
+		  
+		  okay.setOnAction(e1 -> {
 				int width = Integer.parseInt(txtfield.getCharacters().toString() );
 			 	bindedImage3.setImage(tricks.doVerticalStripes(bindedImage1.getImage(),
 				bindedImage2.getImage(), width ) );
 				s.close();
-			}}
-		));
+		  		});	
+			
+		  txtfield.setMaxWidth(200);
+
+		  txt.setX(90);
+		  txt.setY(50);
+
+		  txtfield.setLayoutX(120);
+		  txtfield.setLayoutY(60);
+
+		  cancel.setLayoutX(130);
+		  cancel.setLayoutY(100);
+
+		  okay.setLayoutX(200);
+		  okay.setLayoutY(100);
+
+		  g.getChildren().addAll(txt,txtfield,cancel,okay);
+		  s.setScene(s1);
+		  s.show();
+		  });
+		
 		
 		horizontal = new Button("Horizontal Stripes");
+		horizontal.setOnAction( (event) -> 
+		  {Stage s = new Stage();
+		  Group g = new Group();
+		  Scene s1 = new Scene( g, 400, 200);
+		  Text txt = new Text("Enter a integer to serve as width of horiztonal stripes,in pixels");
+		  TextField txtfield = new TextField();
+		  Button cancel = new Button("Cancel");
+		  cancel.setOnAction(e -> System.exit(0) );
+		  Button okay = new Button("Okay");
+		  
+		  
+		  okay.setOnAction(e1 -> {
+				int width = Integer.parseInt(txtfield.getCharacters().toString() );
+			 	bindedImage3.setImage(tricks.doHorizontalStripes(bindedImage1.getImage(),
+				bindedImage2.getImage(), width ) );
+				s.close();
+		  		});	
+			
+		  txtfield.setMaxWidth(200);
 
+		  txt.setX(90);
+		  txt.setY(50);
+
+		  txtfield.setLayoutX(120);
+		  txtfield.setLayoutY(60);
+
+		  cancel.setLayoutX(130);
+		  cancel.setLayoutY(100);
+
+		  okay.setLayoutX(200);
+		  okay.setLayoutY(100);
+
+		  g.getChildren().addAll(txt,txtfield,cancel,okay);
+		  s.setScene(s1);
+		  s.show();
+		  });
+		  
+		  
 		// spaced out the buttons and thickened the invisible border of the GridPane
 		grid1.setPadding(new Insets(4));
 		grid1.setHgap(12);
@@ -272,16 +319,131 @@ private ImageView bindedImage3 = new ImageView(new Image("default.png"));
 
 	// Creation and placement of Rotate buttons
 	rot1 = new Button ("Rotate");
-	//rot1.setOnAction(event ->  = tricks.doRotate(picture1, 90) );
+	rot1.setOnAction( event -> 
+	  {Stage s = new Stage();
+	  Group g = new Group();
+	  Scene s1 = new Scene( g, 400, 200);
+	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
+	  TextField txtfield = new TextField();
+	  Button cancel = new Button("Cancel");
+	  cancel.setOnAction(e -> System.exit(0) );
+	  Button okay = new Button("Okay");
+	  
+	  
+	  okay.setOnAction(e1 -> {
+			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+		 	bindedImage1.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
+			s.close();
+	  		});	
+		
+	  txtfield.setMaxWidth(200);
+
+	  txt.setX(90);
+	  txt.setY(50);
+
+	  txtfield.setLayoutX(120);
+	  txtfield.setLayoutY(60);
+
+	  cancel.setLayoutX(130);
+	  cancel.setLayoutY(100);
+
+	  okay.setLayoutX(200);
+	  okay.setLayoutY(100);
+
+	  g.getChildren().addAll(txt,txtfield,cancel,okay);
+	  s.setScene(s1);
+	  s.show();
+	  });
+	
+	
 
 	rot2 = new Button ("Rotate");
+	rot2.setOnAction( event -> 
+	  {Stage s = new Stage();
+	  Group g = new Group();
+	  Scene s1 = new Scene( g, 400, 200);
+	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
+	  TextField txtfield = new TextField();
+	  Button cancel = new Button("Cancel");
+	  cancel.setOnAction(e -> System.exit(0) );
+	  Button okay = new Button("Okay");
+	  
+	  
+	  okay.setOnAction(e1 -> {
+			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+		 	bindedImage2.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
+			s.close();
+	  		});	
+		
+	  txtfield.setMaxWidth(200);
+
+	  txt.setX(90);
+	  txt.setY(50);
+
+	  txtfield.setLayoutX(120);
+	  txtfield.setLayoutY(60);
+
+	  cancel.setLayoutX(130);
+	  cancel.setLayoutY(100);
+
+	  okay.setLayoutX(200);
+	  okay.setLayoutY(100);
+
+	  g.getChildren().addAll(txt,txtfield,cancel,okay);
+	  s.setScene(s1);
+	  s.show();
+	  });
+	
+	
+	
 	rot3 = new Button ("Rotate");
+	rot3.setOnAction( event -> 
+	  {Stage s = new Stage();
+	  Group g = new Group();
+	  Scene s1 = new Scene( g, 400, 200);
+	  Text txt = new Text("Enter a integer to serve as degrees of rotation.");
+	  TextField txtfield = new TextField();
+	  Button cancel = new Button("Cancel");
+	  cancel.setOnAction(e -> System.exit(0) );
+	  Button okay = new Button("Okay");
+	  
+	  
+	  okay.setOnAction(e1 -> {
+			int width = Integer.parseInt(txtfield.getCharacters().toString() );
+		 	bindedImage3.setImage(tricks.doRotate(bindedImage1.getImage(), width ) );
+		 	
+			s.close();
+	  		});	
+		
+	  txtfield.setMaxWidth(200);
+
+	  txt.setX(90);
+	  txt.setY(50);
+
+	  txtfield.setLayoutX(120);
+	  txtfield.setLayoutY(60);
+
+	  cancel.setLayoutX(130);
+	  cancel.setLayoutY(100);
+
+	  okay.setLayoutX(200);
+	  okay.setLayoutY(100);
+
+	  g.getChildren().addAll(txt,txtfield,cancel,okay);
+	  s.setScene(s1);
+	  s.show();
+	  });
+	
+	
 
 
 	// Creation and placement of Reset buttons
 	rst1 = new Button ("Reset");
+	rst1.setOnAction(event -> bindedImage1.setImage(new Image("/sample1.png")));
 	rst2 = new Button ("Reset");
+	rst2.setOnAction(event -> bindedImage2.setImage(new Image("/sample2.png")));
 	rst3 = new Button ("Reset");
+	rst3.setOnAction(event -> bindedImage3.setImage(new Image("/default.png")));
 
 	// Add spacing around the buttons
 	firstSet.getChildren().addAll(rot1,rst1);
