@@ -74,9 +74,9 @@ private FileChooser fileChooserForBindedImage3 = new FileChooser();
 
 private MyArtsy tricks;
 
-private ImageView bindedImage1 = new ImageView("/default.png");
-private ImageView bindedImage2 = new ImageView("/default.png");
-private ImageView bindedImage3 = new ImageView("/default.png");
+private ImageView bindedImage1 = new ImageView("file:resources/default.png");
+private ImageView bindedImage2 = new ImageView("file:resources/default.png");
+private ImageView bindedImage3 = new ImageView("file:resources/default.png");
 
 private Image image1BeforeRotate;
 private Image image2BeforeRotate;
@@ -183,7 +183,7 @@ private Image result;
 	fileChooserForBindedImage1.setTitle("Image For Image 1...");
 	
 	// puts the user in a initial file using a path
-	fileChooserForBindedImage1.setInitialDirectory(new File("\\")); // IDK how this is going to act, on nike.
+	
 	
 	
     fileChooserForBindedImage1.getExtensionFilters().add(
@@ -214,7 +214,7 @@ private Image result;
 		fileChooserForBindedImage2.setTitle("Image For Image 2...");
 		
 		// puts the user in a initial file using a path
-		fileChooserForBindedImage2.setInitialDirectory(new File("\\")); // IDK how this is going to act, on nike.
+		
 		
 		
 	    fileChooserForBindedImage2.getExtensionFilters().addAll(
