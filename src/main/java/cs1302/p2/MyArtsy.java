@@ -1,10 +1,14 @@
 
 import javafx.scene.image.*;
 
+import javafx.scene.paint.Color;
 import javafx.scene.image.ImageView;
 import java.lang.Math;
 import java.util.ArrayList;
 import java.util.Arrays;
+import cs1302.effects.Artsy;
+import javafx.scene.image.PixelFormat;
+
 public class MyArtsy implements Artsy {
 /**
  *  This class implements the methods from the Artsy interface.
@@ -70,10 +74,13 @@ public class MyArtsy implements Artsy {
         double initialyy = 0;
         for (int x = 0; x < width; ++x) {
          for (int y = 0; y < height; ++y) {
-                    double xx = (x * Math.cos(degrees*pi/180) + y*Math.sin(degrees*pi/180));
-                    double yy=  (-x * Math.sin(degrees*pi/180) + y*Math.cos(degrees*pi/180));
+         			int newX = x- 300/2;
+         			int newY = y- +300/2;
+                    double xx = (newX * Math.cos(degrees*pi/180) + newY*Math.sin(degrees*pi/180));
+                    double yy=  (-newX * Math.sin(degrees*pi/180) + newY*Math.cos(degrees*pi/180));
                         try{
-                         pw.setArgb((int)(xx+width/190),(int)(yy+height/9), pr.getArgb(x, y));
+                  //       pw.setArgb((int)(xx)+150,(int)(yy)+150, pr.getArgb(x, y));
+                         pw.setArgb(x, y,  pr.getArgb((int)(xx)+150, (int)(yy)+150));
                          // the original code for line 76: pw.setArgb((int)(xx+width/2),(int)(yy+height/2), pr.getArgb(x, y));
                         } catch( IndexOutOfBoundsException e){
 
@@ -82,6 +89,8 @@ public class MyArtsy implements Artsy {
 
              } // for
     }// for
+
+
         return ret;
         } // doRotate
 
